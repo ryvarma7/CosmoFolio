@@ -39,8 +39,25 @@ const Projects: React.FC = () => {
   useEffect(() => {
     const fetchGitHubProjects = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/ryvarma7/repos?sort=stars&per_page=12');
+        // Try to fetch with better headers
+        const response = await fetch('https://api.github.com/users/ryvarma7/repos?sort=updated&order=desc&per_page=100', {
+          headers: {
+            'Accept': 'application/vnd.github.v3+json',
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`GitHub API error: ${response.status}`);
+        }
+        
         const data = await response.json();
+        
+        if (!Array.isArray(data)) {
+          console.error('Unexpected API response format:', data);
+          setProjects([]);
+          setLoading(false);
+          return;
+        }
         
         const formattedProjects: GitHubProject[] = data.map((repo: any) => ({
           id: repo.id,
@@ -53,9 +70,74 @@ const Projects: React.FC = () => {
           topics: repo.topics || [],
         }));
         
+        console.log('Fetched projects:', formattedProjects);
         setProjects(formattedProjects);
       } catch (error) {
         console.error('Error fetching GitHub projects:', error);
+        // Fallback: Use hardcoded projects if API fails
+        const fallbackProjects: GitHubProject[] = [
+          {
+            id: 1,
+            name: 'CosmoFolio',
+            description: 'Portfolio website with cosmic theme',
+            url: 'https://github.com/ryvarma7/CosmoFolio',
+            language: 'CSS',
+            stars: 0,
+            forks: 0,
+            topics: ['portfolio', 'cosmotheme'],
+          },
+          {
+            id: 2,
+            name: 'SafeShare',
+            description: 'Secure file sharing application',
+            url: 'https://github.com/ryvarma7/SafeShare',
+            language: 'Java',
+            stars: 0,
+            forks: 1,
+            topics: ['security', 'file-sharing'],
+          },
+          {
+            id: 3,
+            name: 'dijkstraVisualizer',
+            description: 'Visualization of Dijkstra\'s algorithm',
+            url: 'https://github.com/ryvarma7/dijkstraVisualizer',
+            language: 'JavaScript',
+            stars: 0,
+            forks: 0,
+            topics: ['algorithm', 'visualization'],
+          },
+          {
+            id: 4,
+            name: 'AI-Traffic-Light-Recognition',
+            description: 'AI model for traffic light detection and recognition',
+            url: 'https://github.com/ryvarma7/AI-Traffic-Light-Recognition',
+            language: 'Python',
+            stars: 0,
+            forks: 0,
+            topics: ['ai', 'opencv', 'traffic-detection'],
+          },
+          {
+            id: 5,
+            name: 'SecureYatra',
+            description: 'Travel safety application with security features',
+            url: 'https://github.com/ryvarma7/SecureYatra',
+            language: 'JavaScript',
+            stars: 0,
+            forks: 0,
+            topics: ['travel', 'security'],
+          },
+          {
+            id: 6,
+            name: 'SudoAI',
+            description: 'Personal Gemini Powered AI Chat Bot',
+            url: 'https://github.com/ryvarma7/SudoAI',
+            language: 'CSS',
+            stars: 1,
+            forks: 0,
+            topics: ['ai', 'chatbot', 'gemini'],
+          },
+        ];
+        setProjects(fallbackProjects);
       } finally {
         setLoading(false);
       }
