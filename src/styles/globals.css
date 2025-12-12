@@ -240,3 +240,44 @@ a:hover {
 .transition-transform {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Normalize vertical spacing for main sections (reduce large gaps)
+   Keep `.hero` at full viewport height; make other sections more compact
+*/
+.about,
+.projects,
+.contact,
+.skills-new {
+  min-height: auto !important;
+  padding: 60px 30px !important;
+}
+
+.section-header {
+  margin-bottom: 40px !important;
+}
+
+@media (max-width: 768px) {
+  .about,
+  .projects,
+  .contact,
+  .skills-new {
+    padding: 50px 20px !important;
+  }
+
+  .section-header {
+    margin-bottom: 28px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about,
+  .projects,
+  .contact,
+  .skills-new {
+    padding: 36px 16px !important;
+  }
+
+  .section-header {
+    margin-bottom: 20px !important;
+  }
+}
