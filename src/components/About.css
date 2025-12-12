@@ -208,6 +208,15 @@
     padding: 60px 20px;
   }
 
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+  }
+
   .about-container {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -215,9 +224,38 @@
 
   .achievements-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .constellation {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 40px 16px;
+  }
+
+  .section-header {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .achievement-card {
+    padding: 20px;
   }
 }

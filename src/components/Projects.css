@@ -550,20 +550,44 @@
 
   .section-header {
     margin-bottom: 40px;
+    text-align: center;
   }
 
   .header-with-logo {
     flex-direction: column;
     gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .github-logo {
+    width: 32px;
+    height: 32px;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 6vw, 2rem);
+  }
+
+  .title-underline {
+    margin: 12px auto 0 auto;
   }
 
   .github-projects-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .github-project-card {
+    padding: 20px;
+  }
+
+  .github-project-name {
+    font-size: 1.1rem;
+  }
+
+  .github-project-description {
+    font-size: 0.9rem;
   }
 
   .github-modal {
@@ -581,6 +605,14 @@
     padding: 40px 16px;
   }
 
+  .section-header {
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+
   .github-projects-grid {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -588,28 +620,53 @@
 
   .github-project-card {
     padding: 16px;
+    border-radius: 12px;
   }
 
   .github-card-header {
     flex-direction: column;
+    gap: 10px;
   }
 
-  .section-title {
-    font-size: 1.5rem;
+  .github-project-name {
+    font-size: 1rem;
+  }
+
+  .github-project-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .project-stats {
+    gap: 12px;
   }
 
   .modal-header-github {
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal-header-github h3 {
+    font-size: 1.4rem;
+  }
+
+  .modal-github-link {
+    width: 100%;
+    text-align: center;
+    right: 0;
+    padding: 10px 12px;
+    font-size: 0.85rem;
   }
 
   .github-modal {
     width: 95%;
-    padding: 20px;
+    padding: 18px;
+    max-height: 85vh;
   }
 
   .github-icon-link {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
 }
 

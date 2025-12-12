@@ -146,3 +146,26 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .navbar.scrolled {
+    padding: 10px 16px;
+  }
+
+  .logo {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    padding: 6px 16px;
+    font-size: 0.7rem;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+}

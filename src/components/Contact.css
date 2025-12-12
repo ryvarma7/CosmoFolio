@@ -604,106 +604,28 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact {
-    padding: 80px 24px;
+    padding: 60px 20px;
   }
 
   .section-header {
-    margin-bottom: 60px;
-  }
-
-  .section-subtitle {
-    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0 0 24px 0;
-    line-height: 1.6;
-    max-width: 600px;
-  }
-
-  .contact .section-subtitle {
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-  }
-
-  /* Center only the title inside Contact */
-  .contact .section-title {
-    display: block;
-    width: max-content;
-    margin: 0 auto 8px auto;
-  }
-
-  /* Keep underline left-aligned */
-  .contact .title-underline {
-    margin: 10px auto 0 auto;
-  }
-
-  .contact-card {
-    padding: 32px 24px;
-  }
-
-  .card-icon {
-    font-size: 2rem;
-  }
-
-  .card-icon-wrapper {
-    width: 60px;
-    height: 60px;
-  }
-
-  .icon-glow {
-    width: 60px;
-    height: 60px;
-  }
-
-  .card-label {
-    font-size: 0.8rem;
-    letter-spacing: 1.5px;
-  }
-
-  .card-value {
-    font-size: 1rem;
-  }
-
-  .card-arrow {
-    bottom: 16px;
-    right: 16px;
-    font-size: 1.2rem;
-  }
-
-  .cta-section {
-    padding: 30px 24px;
-    gap: 12px;
-  }
-
-  .status-text {
-    font-size: 0.9rem;
-  }
-
-  .availability-message {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact {
-    padding: 60px 16px;
-    min-height: auto;
-  }
-
-  .section-header {
     margin-bottom: 50px;
   }
 
   .section-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
   }
 
   .section-subtitle {
-    font-size: 0.9rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 auto 0 auto;
+    text-align: center;
+    max-width: 100%;
   }
 
   .title-underline {
-    width: 60px;
+    margin: 12px auto 0 auto;
   }
 
   .contact-grid {
@@ -713,15 +635,7 @@
   }
 
   .contact-card {
-    padding: 28px 20px;
-    border-radius: 16px;
-  }
-
-  .card-gradient {
-    border-radius: 16px;
-  }
-
-  .card-border {
+    padding: 28px 24px;
     border-radius: 16px;
   }
 
@@ -730,21 +644,98 @@
   }
 
   .card-icon-wrapper {
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
   }
 
   .icon-glow {
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
   }
 
   .card-label {
     font-size: 0.75rem;
+    letter-spacing: 1.2px;
   }
 
   .card-value {
     font-size: 0.95rem;
+  }
+
+  .cta-section {
+    flex-direction: column;
+    padding: 28px 20px;
+    gap: 16px;
+  }
+
+  .status-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 50px 16px;
+    min-height: auto;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .title-underline {
+    width: 50px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .contact-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .card-gradient {
+    border-radius: 12px;
+  }
+
+  .card-border {
+    border-radius: 12px;
+  }
+
+  .card-icon {
+    font-size: 1.6rem;
+  }
+
+  .card-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .icon-glow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .card-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .card-value {
+    font-size: 0.9rem;
   }
 
   .card-arrow {
