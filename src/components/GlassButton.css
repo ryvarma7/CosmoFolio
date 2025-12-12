@@ -1,0 +1,152 @@
+/* Advanced Glass Button Component */
+.glass-button {
+  position: relative;
+  padding: 14px 40px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.glass-button:hover {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: none;
+  transform: translateY(-3px);
+}
+
+.glass-button:active {
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+/* Primary button variant */
+.glass-button-primary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+}
+
+.glass-button-primary:hover {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: none;
+}
+
+/* Secondary button variant */
+.glass-button-secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.glass-button-secondary:hover {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: none;
+}
+
+/* Button text - now visible */
+.button-text {
+  color: inherit;
+  position: relative;
+  z-index: 40;
+}
+
+/* Primary label - hidden */
+.button-label-primary {
+  display: none;
+}
+
+.glass-button-primary .button-label-primary {
+  display: none;
+}
+
+.glass-button-secondary .button-label-primary {
+  display: none;
+}
+
+/* Secondary label - hidden */
+.button-label-secondary {
+  display: none;
+}
+
+.glass-button-primary .button-label-secondary {
+  display: none;
+}
+
+.glass-button-secondary .button-label-secondary {
+  display: none;
+}
+
+/* Hover animations */
+.glass-button:hover .button-label-primary {
+  display: none;
+}
+
+.glass-button:hover .button-label-secondary {
+  display: none;
+}
+
+/* Wave SVG background - hidden */
+.button-wave {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .glass-button {
+    padding: 12px 30px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .button-label-primary,
+  .button-label-secondary {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-button {
+    padding: 10px 24px;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    border-radius: 40px;
+  }
+
+  .button-label-primary,
+  .button-label-secondary {
+    font-size: 0.75rem;
+  }
+}
+
+/* Focus state for accessibility */
+.glass-button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.glass-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.glass-button:disabled:hover {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+}

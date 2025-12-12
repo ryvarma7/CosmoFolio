@@ -1,0 +1,96 @@
+.social-buttons-wrapper {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+.social-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  padding: 12px;
+}
+
+.social-buttons-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px;
+}
+
+.social-button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  clip-path: url(#squircleClip);
+  text-decoration: none;
+}
+
+.social-button svg {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.social-button.github {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-color: rgba(107, 114, 128, 0.5);
+}
+
+.social-button.linkedin {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border-color: rgba(107, 114, 128, 0.5);
+}
+
+.social-button:hover {
+  opacity: 0.9;
+}
+
+.social-button:active {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .social-buttons-wrapper {
+    position: static;
+    transform: none;
+    margin-top: 40px;
+  }
+
+  .social-buttons-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .social-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .social-button svg {
+    width: 24px;
+    height: 24px;
+  }
+}

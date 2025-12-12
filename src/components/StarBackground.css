@@ -1,0 +1,368 @@
+.star-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Space gradient: realistic deep space background */
+.space-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(25, 25, 50, 0.95) 0%,
+    rgba(10, 10, 30, 0.98) 40%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  z-index: 1;
+  will-change: contents;
+}
+
+/* Stars container layers */
+.stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  will-change: transform;
+}
+
+.stars-far {
+  z-index: 2;
+  transform: translateZ(0);
+}
+
+.stars-mid {
+  z-index: 3;
+  transform: translateZ(0);
+}
+
+.stars-foreground {
+  z-index: 4;
+  transform: translateZ(0);
+}
+
+/* Optimized star rendering */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  will-change: opacity;
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+.star-far {
+  box-shadow: none;
+}
+
+.star-mid {
+  box-shadow: none;
+}
+
+.star-foreground {
+  box-shadow: none;
+}
+
+/* Realistic twinkling animation (stellar scintillation) */
+@keyframes twinkleRealistic {
+  0% {
+    opacity: 0.3;
+    filter: blur(0.3px);
+  }
+  25% {
+    opacity: 0.8;
+    filter: blur(0.3px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0.2px);
+  }
+  75% {
+    opacity: 0.7;
+    filter: blur(0.3px);
+  }
+  100% {
+    opacity: 0.3;
+    filter: blur(0.3px);
+  }
+}
+
+/* Cosmic dust particles with physics */
+.cosmic-dust {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.dust-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(200, 200, 220, 0.2));
+  border-radius: 50%;
+  filter: blur(0.5px);
+  will-change: transform;
+}
+
+/* Nebula effects (high-altitude cosmic gas clouds) */
+.nebula-system {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.12;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+/* Nebula cloud 1: Upper left drift */
+.nebula-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(100, 150, 255, 0.4), transparent);
+  top: -200px;
+  left: 5%;
+  animation: nebulaDrift1 45s ease-in-out infinite;
+}
+
+/* Nebula cloud 2: Lower right, opposite direction */
+.nebula-2 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(150, 100, 200, 0.3), transparent);
+  bottom: -250px;
+  right: 0%;
+  animation: nebulaDrift2 50s ease-in-out infinite reverse;
+  animation-delay: 3s;
+}
+
+/* Nebula cloud 3: Central, subtle */
+.nebula-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(100, 200, 200, 0.25), transparent);
+  top: 30%;
+  left: 60%;
+  animation: nebulaDrift3 60s ease-in-out infinite;
+  animation-delay: 5s;
+}
+
+/* Nebula cloud 4: Creates depth variation */
+.nebula-4 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(180, 120, 150, 0.2), transparent);
+  bottom: 10%;
+  left: 15%;
+  animation: nebulaDrift1 55s ease-in-out infinite reverse;
+  animation-delay: 7s;
+}
+
+/* Nebula drift animations (slow, smooth, physics-like) */
+@keyframes nebulaDrift1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translate(0, 40px) scale(0.98);
+  }
+  75% {
+    transform: translate(-40px, 20px) scale(1.02);
+  }
+}
+
+@keyframes nebulaDrift2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-25px, 30px) scale(1.03);
+  }
+  50% {
+    transform: translate(0, -35px) scale(0.99);
+  }
+  75% {
+    transform: translate(35px, -15px) scale(1.01);
+  }
+}
+
+@keyframes nebulaDrift3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(15px, 25px) scale(1.02);
+  }
+  50% {
+    transform: translate(-20px, -20px) scale(0.98);
+  }
+  75% {
+    transform: translate(10px, 15px) scale(1.01);
+  }
+}
+
+/* Shooting stars / Meteors with realistic physics */
+.shooting-stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 6;
+}
+
+/* Small satellite flyby */
+.satellite-container {
+  position: absolute;
+  /* start near bottom so path goes upward across the scene */
+  bottom: 8%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+  z-index: 7;
+  --sat-duration: 12s;
+  --sat-delay: 0s;
+}
+
+.satellite-dot {
+  position: absolute;
+  left: -20vw;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 0 6px rgba(255,255,255,0.85), 0 0 14px rgba(180,200,255,0.12);
+  transform-origin: center;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  filter: blur(2px);
+  animation: satelliteDotFly var(--sat-duration) linear infinite;
+  animation-delay: var(--sat-delay);
+}
+
+/* Dot flyby: diagonal from far (small+blur) to near (sharp+bright) and fade */
+@keyframes satelliteDotFly {
+  /* start bottom-left (blurred, small) */
+  0% {
+    transform: translate3d(-20vw, 0vh, 0) scale(0.35);
+    opacity: 0;
+    filter: blur(3px);
+    box-shadow: 0 0 4px rgba(255,255,255,0.55);
+  }
+  6% {
+    opacity: 1;
+  }
+  /* mid flight moves upward-right and sharpens */
+  45% {
+    transform: translate3d(28vw, -24vh, 0) scale(1);
+    filter: blur(0px);
+    box-shadow: 0 0 10px rgba(255,255,255,0.95), 0 0 22px rgba(200,220,255,0.25);
+  }
+  /* near top-right, start to fade */
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(130vw, -88vh, 0) scale(0.7);
+    opacity: 0;
+    filter: blur(1px);
+    box-shadow: 0 0 6px rgba(255,255,255,0.6);
+  }
+}
+
+/* Main meteor body */
+.shooting-star {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 255, 200, 0.6));
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 255, 200, 0.8), 0 0 30px rgba(255, 200, 100, 0.4);
+  animation: meteorPath var(--duration, 2s) linear forwards;
+  z-index: 6;
+}
+
+/* Meteor trail (comet-like tail) */
+.meteor-trail {
+  position: fixed;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 200, 0.8) 0%,
+    rgba(255, 200, 100, 0.4) 40%,
+    rgba(255, 150, 50, 0.2) 70%,
+    transparent 100%
+  );
+  animation: meteorPath var(--duration, 2s) linear forwards;
+  transform-origin: right center;
+  z-index: 5;
+}
+
+/* Realistic meteor trajectory (physics-based diagonal path) */
+@keyframes meteorPath {
+  0% {
+    left: var(--start-x);
+    top: var(--start-y);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    left: var(--end-x);
+    top: var(--end-y);
+    opacity: 0;
+  }
+}
+
+/* Glow effect on meteor */
+@keyframes meteorGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 200, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 200, 100, 0.9));
+  }
+}
+
+.shooting-star {
+  animation: meteorPath var(--duration, 2s) linear forwards, meteorGlow var(--duration, 2s) ease-in-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nebula {
+    filter: blur(40px);
+  }
+
+  .nebula-1,
+  .nebula-2,
+  .nebula-3,
+  .nebula-4 {
+    opacity: 0.08;
+  }
+
+  .star-foreground {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+  }
+}

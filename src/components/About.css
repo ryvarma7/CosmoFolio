@@ -1,0 +1,223 @@
+.about {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 40px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about .section-header {
+  display: block;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  width: 100%;
+}
+
+.about .section-title {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
+.title-underline {
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  margin: 6px auto 0 auto;
+  animation: expandWidth 0.8s ease-out forwards;
+  display: block;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+.about-text p.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.achievement-card {
+  position: relative;
+  padding: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.achievement-card.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.achievement-card:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateY(0px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.achievement-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.achievement-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.achievement-card p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover .card-glow {
+  opacity: 1;
+  animation: moveGlow 3s ease-in-out infinite;
+}
+
+@keyframes moveGlow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Constellation effect */
+.constellation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.constellation-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  transform-origin: 0 0;
+  --line-angle: 0deg;
+  transform: translate(-50%, -50%) rotate(var(--line-angle));
+}
+
+.constellation-star {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  --star-angle: 0deg;
+  transform: rotate(var(--star-angle)) translateY(-150px) translateX(-50%);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.constellation-star:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.constellation-star:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.constellation-star:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.constellation-star:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.constellation-star:nth-child(9) {
+  animation-delay: 1s;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 60px 20px;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .constellation {
+    display: none;
+  }
+}

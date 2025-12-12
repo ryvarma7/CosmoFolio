@@ -1,0 +1,69 @@
+.app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Parallax Grid Background removed per request */
+
+.main-content {
+  position: relative;
+  z-index: 20;
+  will-change: scroll-position;
+  contain: layout style paint;
+}
+
+.footer {
+  position: relative;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-content p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.footer-decoration {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-decoration .star {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.footer-decoration .star:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.footer-decoration .star:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 15px;
+  }
+}

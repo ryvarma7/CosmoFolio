@@ -1,0 +1,848 @@
+.projects {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 40px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.header-with-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.github-logo {
+  color: white;
+  margin-right: 8px;
+  /* stop float animation so logo stays fixed beside the centered title */
+  animation: none !important;
+  transform: none !important;
+}
+
+.section-title {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  margin: 0;
+  text-align: center;
+  display: inline-block;
+}
+
+.title-underline {
+  display: none; /* removed for Projects header per request */
+}
+
+/* nudge header slightly right while keeping it centered visually */
+.header-with-logo {
+  /* removed translate to keep logo/title alignment stable */
+  transform: none;
+  flex-direction: row;
+}
+
+/* Force logo before the title and ensure spacing */
+.header-with-logo .github-logo {
+  order: 0;
+  margin-right: 8px;
+}
+
+.header-with-logo .section-title {
+  order: 1;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Container */
+.projects-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 20px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-state p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+}
+
+/* GitHub Projects Grid */
+.github-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* GitHub Project Card */
+.github-project-card {
+  position: relative;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.github-project-card.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.github-project-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 200, 255, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(100, 200, 255, 0.15);
+}
+
+/* Card Glow Effect */
+.card-hover-glow {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.1), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.github-project-card:hover .card-hover-glow {
+  opacity: 1;
+  animation: moveGlow 3s ease-in-out infinite;
+}
+
+@keyframes moveGlow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Card Header */
+.github-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.github-project-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  transition: color 0.3s ease;
+}
+
+.github-project-card:hover .github-project-name {
+  color: rgba(100, 200, 255, 0.9);
+}
+
+.github-links {
+  display: flex;
+  gap: 8px;
+}
+
+.github-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.github-icon-link:hover {
+  background: rgba(100, 200, 255, 0.15);
+  border-color: rgba(100, 200, 255, 0.3);
+  color: white;
+}
+
+.github-icon-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Description */
+.github-project-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Meta Information */
+.github-project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+}
+
+.language-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.language-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Project Stats */
+.project-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.github-project-card:hover .stat {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.stat svg {
+  opacity: 0.6;
+}
+
+/* Topics */
+.github-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.github-topic {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(100, 200, 255, 0.08);
+  border: 1px solid rgba(100, 200, 255, 0.15);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: rgba(100, 200, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+.github-project-card:hover .github-topic {
+  background: rgba(100, 200, 255, 0.12);
+  border-color: rgba(100, 200, 255, 0.25);
+  color: rgba(100, 200, 255, 0.85);
+}
+
+/* No Projects */
+.no-projects {
+  text-align: center;
+  padding: 60px 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Modal Overlay */
+.github-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal */
+.github-modal {
+  position: relative;
+  background: rgba(20, 30, 50, 0.95);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(100, 200, 255, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Modal Content */
+.github-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal-header-github {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.modal-header-github h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  flex: 1;
+  word-break: break-word;
+}
+
+.modal-github-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(100, 200, 255, 0.1);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  color: rgba(100, 200, 255, 0.9);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 500;
+  /* nudge further left from the right edge so it's not flush */
+  position: relative;
+  right: 42px;
+}
+
+.modal-github-link:hover {
+  background: rgba(100, 200, 255, 0.2);
+  border-color: rgba(100, 200, 255, 0.5);
+  color: white;
+}
+
+.modal-description-github {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Modal Details */
+.modal-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 600;
+}
+
+/* Modal Topics */
+.modal-topics {
+  padding-top: 8px;
+}
+
+.modal-topics h4 {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(100, 200, 255, 0.1);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 16px;
+  font-size: 0.85rem;
+  color: rgba(100, 200, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.topic-badge:hover {
+  background: rgba(100, 200, 255, 0.15);
+  border-color: rgba(100, 200, 255, 0.35);
+  color: rgba(100, 200, 255, 0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .projects {
+    padding: 60px 20px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .header-with-logo {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .github-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .github-modal {
+    width: 95%;
+    padding: 24px;
+  }
+
+  .modal-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 40px 16px;
+  }
+
+  .github-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .github-project-card {
+    padding: 16px;
+  }
+
+  .github-card-header {
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-header-github {
+    flex-direction: column;
+  }
+
+  .github-modal {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .github-icon-link {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Asteroids */
+.asteroids {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.asteroid {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  --asteroid-size: 30px;
+  width: var(--asteroid-size);
+  height: var(--asteroid-size);
+  --asteroid-delay: 0s;
+}
+
+.asteroid:nth-child(1) {
+  top: 5%;
+  left: 5%;
+  animation: float 12s ease-in-out infinite;
+  animation-delay: var(--asteroid-delay);
+}
+
+.asteroid:nth-child(2) {
+  top: 20%;
+  right: 10%;
+  animation: float 14s ease-in-out infinite reverse;
+  animation-delay: var(--asteroid-delay);
+}
+
+.asteroid:nth-child(3) {
+  bottom: 15%;
+  left: 15%;
+  animation: float 11s ease-in-out infinite;
+  animation-delay: var(--asteroid-delay);
+}
+
+.asteroid:nth-child(4) {
+  bottom: 10%;
+  right: 20%;
+  animation: float 13s ease-in-out infinite reverse;
+  animation-delay: var(--asteroid-delay);
+}
+
+.asteroid:nth-child(5) {
+  top: 40%;
+  left: 10%;
+  animation: float 15s ease-in-out infinite;
+  animation-delay: var(--asteroid-delay);
+}
+
+.asteroid:nth-child(6) {
+  top: 50%;
+  right: 15%;
+  animation: float 10s ease-in-out infinite reverse;
+  animation-delay: var(--asteroid-delay);
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 60px 20px;
+  }
+
+  .project-card {
+    height: 350px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .project-inner.flipped {
+    transform: none;
+  }
+
+  .project-back {
+    transform: none;
+    display: none;
+  }
+
+  .project-card:active .project-back {
+    display: flex;
+  }
+
+  .project-card:active .project-front {
+    display: none;
+  }
+
+  .asteroids {
+    display: none;
+  }
+}
+
+/* Project Modal */
+.project-modal-overlay {
+  /* kept for backward compatibility but not used for popups */
+  display: none;
+}
+
+/* Popup overlay positioned within the projects container */
+.github-popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.github-popup {
+  position: absolute;
+  transform: none;
+  background: linear-gradient(135deg,
+    rgba(50, 100, 150, 0.12),
+    rgba(100, 50, 150, 0.06));
+  border: 1px solid rgba(100, 200, 255, 0.18);
+  border-radius: 12px;
+  padding: 20px;
+  width: 520px;
+  max-width: 90%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6), 0 0 30px rgba(100,200,255,0.06);
+  backdrop-filter: blur(8px);
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.modal-header h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.modal-description {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.modal-tag {
+  background: rgba(100, 200, 255, 0.1);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  color: rgba(100, 200, 255, 0.8);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.modal-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.modal-link {
+  flex: 1;
+  padding: 10px 15px;
+  background: rgba(100, 200, 255, 0.1);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  color: rgba(100, 200, 255, 0.8);
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.modal-link:hover {
+  background: rgba(100, 200, 255, 0.2);
+  border-color: rgba(100, 200, 255, 0.5);
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
