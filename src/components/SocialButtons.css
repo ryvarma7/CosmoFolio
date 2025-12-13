@@ -1,6 +1,7 @@
 .social-buttons-wrapper {
+  /* position absolutely inside .video-container so it sits to the right of the wireart */
   position: absolute;
-  right: 30px;
+  right: -72px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 50;
@@ -71,27 +72,53 @@
 .social-button:active {
   opacity: 0.8;
 }
-
 @media (max-width: 768px) {
   .social-buttons-wrapper {
-    /* place fixed in the center of the viewport on mobile */
-    position: fixed;
+    position: absolute;
+    right: auto;
+    top: auto;
+    bottom: 20px;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: auto;
+    transform: translateX(-50%);
+    z-index: 50;
+  }
+
+  .social-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    padding: 8px;
   }
 
   .social-buttons-container {
-    flex-direction: column;
+    position: relative;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    gap: 8px; /* reduced gap between icons */
+    gap: 12px;
     padding: 8px;
+  }
+
+  .social-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+
+  .social-button svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-buttons-wrapper {
+    bottom: 16px;
   }
 
   .social-button {

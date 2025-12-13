@@ -224,8 +224,12 @@
 
 .role-switcher {
   height: 40px;
-  margin: 20px 0;
+  margin: 12px 0;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .hero-subtitle {
@@ -272,7 +276,7 @@
   .hero {
     /* Keep the hero full screen so the name can sit vertically centered */
     min-height: 100vh;
-    padding: 24px 20px;
+    padding: 60px 20px 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -280,12 +284,13 @@
 
   .hero-content {
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 720px;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 0 16px;
   }
 
   .text-content {
@@ -300,6 +305,7 @@
 
   .hero-title {
     font-size: clamp(1.8rem, 8vw, 2.5rem);
+    margin-bottom: 8px;
   }
 
   .hero-subtitle {
@@ -309,6 +315,7 @@
   .hero-description {
     font-size: 0.95rem;
     max-width: 100%;
+    margin: 20px 0;
   }
 
   .video-container {
@@ -316,18 +323,23 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   .profile-float {
     /* place the wireart inline in the normal document flow so it appears under the name */
     position: relative;
-    transform: none;
-    margin-top: 8px;
+    /* nudge the wireart to the right on mobile so it aligns with the design */
+    transform: translateX(40px);
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .profile-video {
-    max-width: 320px;
-    width: 80%;
+    max-width: 280px;
+    width: 70%;
     height: auto;
     display: block;
   }
@@ -338,26 +350,34 @@
   }
 
   .cta-buttons {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    gap: 15px;
+    gap: 12px;
+    margin-top: 24px;
   }
 
   .btn {
-    width: 100%;
-    max-width: 280px;
+    width: auto;
+    max-width: none;
   }
 }
 
 @media (max-width: 480px) {
   .hero {
     min-height: 100vh;
-    padding: 18px 16px;
+    padding: 50px 16px 30px;
+  }
+
+  .hero-content {
+    padding: 0 8px;
+    gap: 12px;
   }
 
   .hero-title {
     font-size: clamp(1.5rem, 6vw, 2.2rem);
+    margin-bottom: 4px;
   }
 
   .hero-subtitle {
@@ -366,20 +386,26 @@
 
   .hero-description {
     font-size: 0.9rem;
+    margin: 16px 0;
   }
 
   .profile-video {
-    max-width: 240px;
-    width: 72%;
+    max-width: 220px;
+    width: 65%;
+  }
+
+  .profile-float {
+    transform: translateX(24px);
   }
 
   .cta-buttons {
-    gap: 12px;
+    gap: 10px;
+    margin-top: 16px;
   }
 
   .btn {
-    max-width: 240px;
-    padding: 12px 24px;
+    max-width: none;
+    padding: 12px 20px;
     font-size: 0.9rem;
   }
 }

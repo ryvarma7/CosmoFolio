@@ -56,7 +56,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="hero">
-      <SocialButtons />
       <div className="hero-content">
         <div className="text-content">
           <h1 className="hero-title">
@@ -96,6 +95,7 @@ const Hero: React.FC = () => {
           <div className="profile-float">
             <img src="/wireart.png" alt="Wire Art" className="profile-video" />
           </div>
+          <SocialButtons />
         </div>
       </div>
     </section>
