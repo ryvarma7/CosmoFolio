@@ -8,6 +8,9 @@
   overflow: hidden;
   padding: 40px 20px;
   z-index: 1;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .hero-content {
