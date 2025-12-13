@@ -1,3 +1,4 @@
+/* Cleaned Hero.css with responsive mobile centering */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -269,19 +270,32 @@
 
 @media (max-width: 768px) {
   .hero {
-    min-height: auto;
-    padding: 60px 20px 40px 20px;
+    /* Keep the hero full screen so the name can sit vertically centered */
+    min-height: 100vh;
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-content {
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
   }
 
   .text-content {
     text-align: center;
     width: 100%;
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-title {
@@ -305,12 +319,22 @@
   }
 
   .profile-float {
-    transform: translateX(0) translateY(0);
+    /* place the wireart inline in the normal document flow so it appears under the name */
+    position: relative;
+    transform: none;
+    margin-top: 8px;
   }
 
   .profile-video {
-    max-width: 280px;
-    width: 100%;
+    max-width: 320px;
+    width: 80%;
+    height: auto;
+    display: block;
+  }
+
+  /* hide heavy decorative or absolute background elements that may overlap on small screens */
+  .planets-container {
+    display: none;
   }
 
   .cta-buttons {
@@ -328,8 +352,8 @@
 
 @media (max-width: 480px) {
   .hero {
-    min-height: auto;
-    padding: 50px 16px 30px 16px;
+    min-height: 100vh;
+    padding: 18px 16px;
   }
 
   .hero-title {
@@ -346,6 +370,7 @@
 
   .profile-video {
     max-width: 240px;
+    width: 72%;
   }
 
   .cta-buttons {
@@ -358,3 +383,4 @@
     font-size: 0.9rem;
   }
 }
+

@@ -74,23 +74,34 @@
 
 @media (max-width: 768px) {
   .social-buttons-wrapper {
-    position: static;
-    transform: none;
-    margin-top: 40px;
+    /* place fixed in the center of the viewport on mobile */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
   }
 
   .social-buttons-container {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    gap: 8px; /* reduced gap between icons */
+    padding: 8px;
   }
 
   .social-button {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
   }
 
   .social-button svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 }

@@ -75,8 +75,12 @@
 
 @media (max-width: 768px) {
   .music-switch-wrapper {
-    bottom: 20px;
-    right: 20px;
+    /* Ensure the mute toggle sits inline under CTA and is centered */
+    position: relative;
+    margin: 8px auto 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .toggleSwitch {
