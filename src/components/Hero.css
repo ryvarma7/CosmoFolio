@@ -330,7 +330,11 @@
     /* place the wireart inline in the normal document flow so it appears under the name */
     position: relative;
     /* nudge the wireart to the right on mobile so it aligns with the design */
-    transform: translateX(40px);
+    /* moved another 5px left as requested */
+    /* moving 5px further left now */
+    transform: translateX(1px) translateY(0);
+    /* disable float animation on mobile so transform is applied consistently */
+    animation: none;
     margin-top: 0;
     width: 100%;
     display: flex;
@@ -395,7 +399,10 @@
   }
 
   .profile-float {
-    transform: translateX(24px);
+    /* moved another 5px left for smaller screens */
+    /* moving 5px further left now */
+    transform: translateX(1px) translateY(0);
+    animation: none;
   }
 
   .cta-buttons {
